@@ -12,6 +12,7 @@ import { HeroesRoutingModule } from './heroes-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
+import { ImageUrlPipe } from './pipes/image-url.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HeroCardComponent } from './components/hero-card/hero-card.component';
     HeroeComponent,
     HomeComponent,
     ListComponent,
-    HeroCardComponent
+    HeroCardComponent,
+    ImageUrlPipe
   ],
   imports: [
     CommonModule,
