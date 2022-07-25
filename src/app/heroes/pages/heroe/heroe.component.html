@@ -5,7 +5,7 @@
 </mat-grid-list>
 
 <ng-template #divHero>
-	<div fxLayout="row" fxLayout.xs="column">
+	<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px">
 		
 		<div fxFlex="50">
 			<h1>{{ hero.superhero }}</h1>
@@ -27,15 +27,17 @@
 				<mat-list-item> <strong>Primera aparición</strong>: {{ hero.first_appearance }}</mat-list-item>
 				<mat-list-item> 
 					<strong>Personajes</strong>: 
-
-					<mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
-						<mat-chip	cdkDrag	color="warn" *ngFor="let character of (hero.characters | split )">
-							{{ character }}
-						</mat-chip>
-					</mat-chip-list>
-
 				</mat-list-item>
 			</mat-list>
+
+			<div>
+				<mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
+					<mat-chip	cdkDrag	color="warn" *ngFor="let character of (hero.characters | split )">
+						{{ character }}
+					</mat-chip>
+				</mat-chip-list>
+			</div>
+
 			<br />
 			<mat-divider></mat-divider>
 			<br />
