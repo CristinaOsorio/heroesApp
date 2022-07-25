@@ -11,6 +11,7 @@ import { HeroesRoutingModule } from './heroes-routing.module';
 
 import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HeroCardComponent } from './components/hero-card/hero-card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     SearchComponent,
     HeroeComponent,
     HomeComponent,
-    ListComponent
+    ListComponent,
+    HeroCardComponent
   ],
   imports: [
     CommonModule,
