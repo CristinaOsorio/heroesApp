@@ -16,4 +16,8 @@ export class HeroesService {
     return this.http.get<Heroes[]>(`${this.url}/heroes`)
   }
 
+  getHeroe(id: string): Observable<Heroes> {
+    return this.http.get<Heroes>(`${this.url}/heroes/${id}`)
+  }
+
 }

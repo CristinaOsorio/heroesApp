@@ -13,11 +13,11 @@
 		<strong>Personajes: </strong> {{ hero.characters }}
 	</mat-card-content>
 	<mat-card-actions>
-		<button mat-fab mat-button color="accent">
+		<a mat-fab mat-button color="accent" [routerLink]="['/heroes',  hero.id]">
 			<mat-icon>visibility</mat-icon>
-		</button>
-		<button mat-fab mat-button color="primary">
+		</a>
+		<a mat-fab mat-button color="primary" [routerLink]="['/heroes', 'edit', hero.id]">
 			<mat-icon>edit</mat-icon>
-		</button>
+		</a>
 	</mat-card-actions>
 </mat-card>
