@@ -1,1 +1,47 @@
-<p>heroe works!</p>
+<mat-grid-list cols="1" *ngIf="!hero; else divHero">
+	<mat-grid-tile>
+		<mat-spinner></mat-spinner>
+	</mat-grid-tile>
+</mat-grid-list>
+
+<ng-template #divHero>
+	<div fxLayout="row" fxLayout.xs="column">
+		
+		<div fxFlex="50">
+			<h1>{{ hero.superhero }}</h1>
+			<mat-divider></mat-divider>
+			<br />
+
+			<img [src]="hero | imageUrl" alt="">
+		</div>
+
+		<div fxFlex="50">
+			<h1>{{ hero.publisher }}</h1>
+			<mat-divider></mat-divider>
+
+			<br />
+
+			<mat-list>
+				<div mat-subheader>Información</div>
+				<mat-list-item> <strong>Nombre real</strong>: {{ hero.alter_ego }}</mat-list-item>
+				<mat-list-item> <strong>Primera aparición</strong>: {{ hero.first_appearance }}</mat-list-item>
+				<mat-list-item> 
+					<strong>Personajes</strong>: 
+
+					<mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
+						<mat-chip	cdkDrag	color="warn" *ngFor="let character of (hero.characters | split )">
+							{{ character }}
+						</mat-chip>
+					</mat-chip-list>
+
+				</mat-list-item>
+			</mat-list>
+			<br />
+			<mat-divider></mat-divider>
+			<br />
+			<button mat-fab [routerLink]="['../']">
+				<mat-icon>west</mat-icon>
+			</button>
+		</div>
+	</div>
+</ng-template>

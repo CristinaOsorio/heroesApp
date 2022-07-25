@@ -13,6 +13,7 @@ import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { ImageUrlPipe } from './pipes/image-url.pipe';
+import { SplitPipe } from './pipes/split.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ImageUrlPipe } from './pipes/image-url.pipe';
     HomeComponent,
     ListComponent,
     HeroCardComponent,
-    ImageUrlPipe
+    ImageUrlPipe,
+    SplitPipe
   ],
   imports: [
     CommonModule,
