@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { ImageUrlPipe } from './pipes/image-url.pipe';
 import { SplitPipe } from './pipes/split.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SplitPipe } from './pipes/split.pipe';
     FlexLayoutModule,
     RouterModule,
     HeroesRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ]
 })
 export class HeroesModule { }

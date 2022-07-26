@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Heroes } from '../interfaces/heroes.interface';
@@ -19,6 +19,11 @@ export class HeroesService {
 
   getHeroe(id: string): Observable<Heroes> {
     return this.http.get<Heroes>(`${this.api}/heroes/${id}`)
+  }
+
+  filterHeroes(data: string): Observable<Heroes[]> {
+    const params = new HttpParams().set('q', data).set('limit', 6)
+    return this.http.get<Heroes[]>(`${this.api}/heroes`, { params });
   }
 
 }
