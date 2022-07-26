@@ -26,4 +26,12 @@ export class HeroesService {
     return this.http.get<Heroes[]>(`${this.api}/heroes`, { params });
   }
 
+  createHero(hero: Heroes): Observable<Heroes> {
+    return this.http.post<Heroes>(`${this.api}/heroes`, hero);
+  }
+
+  updatedHero(hero: Heroes): Observable<Heroes> {
+    return this.http.put<Heroes>(`${this.api}/heroes/${hero.id}`, hero);
+  }
+
 }
