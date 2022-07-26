@@ -6,11 +6,13 @@ import { Heroes } from '../interfaces/heroes.interface';
 })
 export class ImageUrlPipe implements PipeTransform {
 
-  transform(value: Heroes): string {
-    if(value!.alt_img) {
-      return `assets/heroes/${ value.id }.jpg`;
+  transform(hero: Heroes): string {
+
+    if(!hero.id || (hero.hasOwnProperty('alt_img') && !hero.alt_img)) {
+      return `assets/no-image.png`;
     }
-    return `assets/no-image.png`;
+
+    return hero.alt_img ? hero.alt_img : `assets/heroes/${hero.id}.jpg`;
 
   }
 

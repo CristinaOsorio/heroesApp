@@ -3,6 +3,8 @@
 </h1>
 <mat-divider></mat-divider>
 
+<br />
+
 <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
   <div fxFlex="50" fxLayout="column">
     <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
@@ -44,7 +46,7 @@
 
     <mat-form-field fxFlex="100">
       <mat-label>Fotos Url</mat-label>
-      <input matInput type="url" required />
+      <input matInput type="url" [(ngModel)]="hero.alt_img" required />
     </mat-form-field>
 
     <br />
@@ -55,7 +57,7 @@
     </button>
   </div>
 
-  <div fxFlex="50">
-    <img [src]="hero | imageUrl" />
+  <div fxFlex="50" fxLayoutAlign="center">
+    <img mat-card-image [src]="hero | imageUrl" />
   </div>
 </div>

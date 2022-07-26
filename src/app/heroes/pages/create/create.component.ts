@@ -9,8 +9,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styles: [
-  ]
+  styles: [`
+    img {
+      max-height: 70vh;
+    }
+  `]
 })
 export class CreateComponent implements OnInit {
   title: string = '';
