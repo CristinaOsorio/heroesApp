@@ -49,6 +49,7 @@ export class CreateComponent implements OnInit {
       }
         
     }, error => {
+        this.redirectTo();
       if (error.status == 404) {
         return this.openSnackBar(`No existe el heroe con el ID ${this.heroID}`);
       } 
@@ -82,6 +83,23 @@ export class CreateComponent implements OnInit {
       error =>  this.openSnackBar('Ha ocurrido un error en el servidor al momento de actualizar al héroe.')
     )
 
+  }
+
+  delete() {
+    const hero = {...this.hero}
+    this.heroesService.deleteHero(this.hero).subscribe(
+      resp => {
+        this.openSnackBar(`El héroe ${ hero.superhero } ha sido eliminado.`);
+        this.redirectTo();
+      },
+      error =>  
+        this.openSnackBar('Ha ocurrido un error en el servidor al momento de eliminar al héroe.')
+      
+    )
+  }
+
+  redirectTo() {
+    this.router.navigate(['/heroes', 'list']);
   }
 
   openSnackBar(message: string) {

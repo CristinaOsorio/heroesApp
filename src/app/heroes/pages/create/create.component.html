@@ -51,13 +51,20 @@
 
     <br />
 
-    <button mat-raised-button color="primary" (click)="save()">
-      <mat-icon>edit</mat-icon>
-      Guardar
-    </button>
+    <div fxLayout>
+      <button mat-raised-button color="primary" (click)="save()">
+        <mat-icon>edit</mat-icon>
+        Guardar
+      </button>
+      <span class="spacer"></span>
+      <button mat-raised-button color="warn" (click)="delete()" *ngIf="hero.id">
+        <mat-icon>delete</mat-icon>
+        Eliminar
+      </button>
+    </div>
   </div>
 
   <div fxFlex="50" fxLayoutAlign="center">
-    <img mat-card-image [src]="hero | imageUrl" />
+    <img [src]="hero | imageUrl" />
   </div>
 </div>
