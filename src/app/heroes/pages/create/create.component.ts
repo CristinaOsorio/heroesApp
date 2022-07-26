@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Heroes, Publisher } from '../../interfaces/heroes.interface';
-import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { Heroes, Publisher } from '../../interfaces/heroes.interface';
+import { HeroesService } from '../../services/heroes.service';
+import { ConfirmComponent } from '../../components/confirm/confirm.component';
 
 @Component({
   selector: 'app-create',
@@ -32,7 +35,8 @@ export class CreateComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private _snackBar: MatSnackBar, 
-    private heroesService: HeroesService
+    private heroesService: HeroesService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -86,19 +90,30 @@ export class CreateComponent implements OnInit {
   }
 
   delete() {
-    const hero = {...this.hero}
-    this.heroesService.deleteHero(this.hero).subscribe(
-      resp => {
-        this.openSnackBar(`El héroe ${ hero.superhero } ha sido eliminado.`);
-        this.redirectTo();
+
+    const hero = {...this.hero };
+
+    const dialog = this.dialog.open(ConfirmComponent, {
+      width: '300px',
+      data: hero
+    });
+
+    dialog.afterClosed()
+    .pipe(
+      switchMap(result => (result) ? this.heroesService.deleteHero(this.hero) : of(null))
+    )
+      .subscribe( result => {
+        if(result ) {
+          this.openSnackBar(`El héroe ${ hero.superhero } ha sido eliminado.`);
+          this.redirectTo();
+        }
       },
       error =>  
         this.openSnackBar('Ha ocurrido un error en el servidor al momento de eliminar al héroe.')
-      
-    )
+    );  
   }
 
-  redirectTo() {
+  private redirectTo() {
     this.router.navigate(['/heroes', 'list']);
   }
 

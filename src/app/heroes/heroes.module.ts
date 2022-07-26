@@ -15,6 +15,7 @@ import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { ImageUrlPipe } from './pipes/image-url.pipe';
 import { SplitPipe } from './pipes/split.pipe';
 import { FormsModule } from '@angular/forms';
+import { ConfirmComponent } from './components/confirm/confirm.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     ListComponent,
     HeroCardComponent,
     ImageUrlPipe,
-    SplitPipe
+    SplitPipe,
+    ConfirmComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,9 @@
+<h2>¿Esta seguro de ejecutar esta accion?</h2>
+<hr />
+<p>Esta apunto de eliminiar de forma permanente ha {{ data.superhero }}.</p>
+<br />
+<div fxLayout>
+  <button mat-raised-button color="warn" (click)="delete()">Sí, borrar</button>
+  <span class="spacer"></span>
+  <button mat-raised-button (click)="closed()">No, cancelar</button>
+</div>
